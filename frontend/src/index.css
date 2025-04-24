@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: "Quicksand", sans-serif;
+  }
+
+  :root {
+    --bg-color: #e0e0e0;
+    --form-bg: #e0e0e0;
+    --input-bg: #e7e7e7;
+    --button-bg: #d1c4e9;
+    --text-color: #5b2a86;
+    --placeholder-color: #a393bf;
+
+    --shadow-deep-inset: inset 6px 6px 8px rgba(0, 0, 0, 0.15),
+      inset -6px -6px 8px rgba(255, 255, 255, 0.7);
+
+    --shadow-out: 8px 8px 15px rgba(163, 177, 198, 0.6),
+      -8px -8px 15px rgba(255, 255, 255, 0.7);
+
+    --shadow-out-hover: 4px 4px 8px rgba(0, 0, 0, 0.12),
+      -4px -4px 8px rgba(255, 255, 255, 0.85);
+
+    --shadow-form: 10px 10px 20px rgba(163, 177, 198, 0.7),
+      -10px -10px 20px rgba(255, 255, 255, 0.85);
+  }
+}
+
+@layer utilities {
+  .shadow-deep-inset {
+    box-shadow: var(--shadow-deep-inset);
+  }
+  .shadow-button-neumorphism {
+    box-shadow: var(--shadow-out);
+    transition: box-shadow 0.3s ease;
+  }
+  .hover\:shadow-button-neumorphism-hover:hover {
+    box-shadow: var(--shadow-out-hover);
+  }
+  .shadow-form-neumorphism {
+    box-shadow: var(--shadow-form);
+    transition: box-shadow 0.3s ease;
+  }
+  .shadow-logout-button {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15),
+      -2px -2px 6px rgba(255, 255, 255, 0.3);
+    transition: box-shadow 0.3s ease;
+    background: var(--input-bg);
+    border-radius: 1rem;
+  }
+
+  .shadow-logout-button:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1),
+      -1px -1px 4px rgba(255, 255, 255, 0.4);
+  }
+}

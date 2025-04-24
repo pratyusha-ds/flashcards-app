@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  password  String
+  name      String?
+  avatarUrl String?
+  decks     Deck[]
+}
+
+model Deck {
+  id     Int    @id @default(autoincrement())
+  title  String
+  userId Int
+  cards  Card[]
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Card {
+  id          Int      @id @default(autoincrement())
+  question    String
+  answer      String
+  deckId      Int
+  easeFactor  Float    @default(2.5)
+  interval    Int      @default(1)
+  repetitions Int      @default(0)
+  dueDate     DateTime @default(now())
+  correct     Int      @default(0)
+  incorrect   Int      @default(0)
+  deck        Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+}
